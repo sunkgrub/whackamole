@@ -2,10 +2,12 @@
 // Written for EDD 111 2024
 // Written By: Katherine O'Keefe
 // Edited by: Koen Gieskes
+// Edited further by: Aiden Rivera
 
 //define variables used in code
 //variables associated with digital pin number
 //defining LED lights
+
 const int redLED = 2;
 const int blueLED = 3;
 const int greenLED = 4;
@@ -34,6 +36,7 @@ void display_lights(bool Light1, bool Light2, bool Light3, bool Light4) {
   digitalWrite(blueLED, Light2);
   digitalWrite(yellowLED, Light3);
   digitalWrite(greenLED, Light4);
+
 }
 
 void setup()
@@ -56,7 +59,7 @@ void setup()
   randomSeed(analogRead(0));
   
   //initialize the piezo buzzer
-  pinMode(10, OUTPUT);
+  pinMode(Piezo, OUTPUT);
 }
 
 //main function loop
@@ -117,27 +120,19 @@ void loop()
         if(digitalRead(redButton)==HIGH)
         {
           //shows that a point was gotten
-          digitalWrite(redLED, HIGH);
-          digitalWrite(blueLED, HIGH);
-          digitalWrite(greenLED, HIGH);
-          digitalWrite(yellowLED, HIGH);
-          
+          display_lights(1,1,1,1);
           delay(250);//in milliseconds
           
-          digitalWrite(redLED, LOW);
-          digitalWrite(blueLED, LOW);
-          digitalWrite(greenLED, LOW);
-          digitalWrite(yellowLED, LOW);
-          
+          display_lights(0,0,0,0);
           delay(250);//in milliseconds
           
           //turns the piezo button ON
-          tone(10,250);
+          tone(Piezo,250);
           
           delay(200);//in milliseconds
           
           //turns the piezo button OFF
-          noTone(10);
+          noTone(Piezo);
           
           //adds 1 point to your score
           score++;
@@ -270,51 +265,31 @@ void loop()
       elapsed = millis()-starttime;
       delay(150);//in milliseconds
     }
-    digitalWrite(redLED, LOW);
-    digitalWrite(blueLED, LOW);
-    digitalWrite(greenLED, LOW);
-    digitalWrite(yellowLED, LOW);
+    display_lights(0,0,0,0);
 
   }
   score = 0;
   //Shows game is over
-  digitalWrite(redLED, HIGH);
-  digitalWrite(blueLED, HIGH);
-  digitalWrite(greenLED, HIGH);
-  digitalWrite(yellowLED, HIGH);
+  display_lights(1,1,1,1);
   delay(500);
-  digitalWrite(redLED, LOW);
-  digitalWrite(blueLED, LOW);
-  digitalWrite(greenLED, LOW);
-  digitalWrite(yellowLED, LOW);
+
+  display_lights(0,0,0,0);
   delay(400);
-  digitalWrite(redLED, HIGH);
-  digitalWrite(blueLED, HIGH);
-  digitalWrite(greenLED, HIGH);
-  digitalWrite(yellowLED, HIGH);
+
+  display_lights(1,1,1,1);
   delay(300);
-  digitalWrite(redLED, LOW);
-  digitalWrite(blueLED, LOW);
-  digitalWrite(greenLED, LOW);
-  digitalWrite(yellowLED, LOW);
+
+  display_lights(0,0,0,0);
   delay(200);
-  digitalWrite(redLED, HIGH);
-  digitalWrite(blueLED, HIGH);
-  digitalWrite(greenLED, HIGH);
-  digitalWrite(yellowLED, HIGH);
+
+  display_lights(1,1,1,1);
   delay(200);
-  digitalWrite(redLED, LOW);
-  digitalWrite(blueLED, LOW);
-  digitalWrite(greenLED, LOW);
-  digitalWrite(yellowLED, LOW);
+
+  display_lights(0,0,0,0);
   delay(100);
-  digitalWrite(redLED, HIGH);
-  digitalWrite(blueLED, HIGH);
-  digitalWrite(greenLED, HIGH);
-  digitalWrite(yellowLED, HIGH);
+
+  display_lights(1,1,1,1);
   delay(500);
-  digitalWrite(redLED, LOW);
-  digitalWrite(blueLED, LOW);
-  digitalWrite(greenLED, LOW);
-  digitalWrite(yellowLED, LOW);
+
+  display_lights(0,0,0,0);
 }

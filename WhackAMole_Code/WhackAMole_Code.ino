@@ -6,9 +6,6 @@
 //define variables used in code
 //variables associated with digital pin number
 //defining LED lights
-
-#include <Arduino.h>
-
 const int redLED = 2;
 const int blueLED = 3;
 const int greenLED = 4;

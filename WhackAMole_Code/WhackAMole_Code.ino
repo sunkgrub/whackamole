@@ -8,6 +8,11 @@
 //variables associated with digital pin number
 //defining LED lights
 
+#include <map>
+#include <iostream>
+
+using namespace std;
+
 const int redLED = 2;
 const int blueLED = 3;
 const int greenLED = 4;
@@ -39,6 +44,37 @@ void display_lights(bool Light1, bool Light2, bool Light3, bool Light4) {
 
 }
 
+void checkMole(int LED) {
+  if(digitalRead(LED)==HIGH)
+      {
+        //reads if the button corrosponding to the redLED is ON
+        //if redButton is ON proceed into if statement
+        if(digitalRead(buttonMoleMap[LED])==HIGH)
+        {
+          //shows that a point was gotten
+          display_lights(1,1,1,1);
+          delay(250);//in milliseconds
+          
+          display_lights(0,0,0,0);
+          delay(250);//in milliseconds
+          
+          //turns the piezo button ON
+          tone(Piezo,250);
+          
+          delay(200);//in milliseconds
+          
+          //turns the piezo button OFF
+          noTone(Piezo);
+          
+          //adds 1 point to your score
+          score++;
+
+        //turns OFF the LED light
+        digitalWrite(redLED, LOW);
+        }
+      }
+}
+
 void setup()
 {
   //initialize the LED lights as OUTPUTS
@@ -60,6 +96,15 @@ void setup()
   
   //initialize the piezo buzzer
   pinMode(Piezo, OUTPUT);
+
+  //Creating map of buttons and leds
+  map<int,int> buttonMoleMap = {
+    {redLED,redButton},
+    {blueLED, blueButton},
+    {yellowLED, yellowButton},
+    {greenLED, greenButton}
+  };
+
 }
 
 //main function loop
@@ -113,154 +158,19 @@ void loop()
     {
       //reads if the redLED is ON (HIGH)
       //if redLED is ON continue into if statement if not move on
-      if(digitalRead(redLED)==HIGH)
-      {
-        //reads if the button corrosponding to the redLED is ON
-        //if redButton is ON proceed into if statement
-        if(digitalRead(redButton)==HIGH)
-        {
-          //shows that a point was gotten
-          display_lights(1,1,1,1);
-          delay(250);//in milliseconds
-          
-          display_lights(0,0,0,0);
-          delay(250);//in milliseconds
-          
-          //turns the piezo button ON
-          tone(Piezo,250);
-          
-          delay(200);//in milliseconds
-          
-          //turns the piezo button OFF
-          noTone(Piezo);
-          
-          //adds 1 point to your score
-          score++;
-
-        //turns OFF the LED light
-        digitalWrite(redLED, LOW);
-        }
-      }
+      checkMole(redLED);
       
       //reads if the blueLED is ON (HIGH)
       //if blueLED is ON continue into if statement if not move on
-      if(digitalRead(blueLED)==HIGH)
-      {
-        //reads if the button corrosponding to the blueLED is ON
-        //if blueButton is ON proceed into if statement
-        if(digitalRead(blueButton)==HIGH)
-        {
-          //shows that a point was gotten
-          digitalWrite(redLED, HIGH);
-          digitalWrite(blueLED, HIGH);
-          digitalWrite(greenLED, HIGH);
-          digitalWrite(yellowLED, HIGH);
-          
-          delay(250);//in milliseconds
-          
-          digitalWrite(redLED, LOW);
-          digitalWrite(blueLED, LOW);
-          digitalWrite(greenLED, LOW);
-          digitalWrite(yellowLED, LOW);
-          
-          delay(250);//in milliseconds
-          
-          //turns the piezo button ON
-         tone(10,250);
-          
-          delay(200);//in milliseconds
-          
-          //turns the piezo button OFF
-          noTone(10);
-          
-          //adds 1 point to your score
-          score++;
-        
-        
-        //turns OFF the LED light
-        digitalWrite(blueLED, LOW);
-        }
-      }
+      checkMole(blueLED);
       
       //reads if the yellowLED is ON (HIGH)
       //if yellowLED is ON continue into if statement if not move on
-      if(digitalRead(yellowLED)==HIGH)
-      {
-        //reads if the button corrosponding to the yellowLED is ON
-        //if yellowButton is ON proceed into if statement
-        if(digitalRead(yellowButton)==HIGH)
-        {
-          //shows that a point was gotten
-          digitalWrite(redLED, HIGH);
-          digitalWrite(blueLED, HIGH);
-          digitalWrite(greenLED, HIGH);
-          digitalWrite(yellowLED, HIGH);
-          
-          delay(250);//in milliseconds
-          
-          digitalWrite(redLED, LOW);
-          digitalWrite(blueLED, LOW);
-          digitalWrite(greenLED, LOW);
-          digitalWrite(yellowLED, LOW);
-          
-          delay(250);//in milliseconds
-          
-          //turns the piezo button ON
-          tone(10,250);
-          
-          delay(200);//in milliseconds
-          
-          //turns the piezo button OFF
-          noTone(10);
-          
-          //adds 1 point to your score
-          score++;
-        
-        
-        //turns OFF the LED light
-        digitalWrite(yellowLED, LOW);
-        }
-      }
+      checkMole(yellowLED);
       
       //reads if the greenLED is ON (HIGH)
       //if greenLED is ON continue into if statement if not move on
-      if(digitalRead(greenLED)==HIGH)
-      {
-        //reads if the button corrosponding to the greenLED is ON
-        //if greenButton is ON proceed into if statement
-        if(digitalRead(greenButton)==HIGH)
-        {
-          //shows that a point was gotten
-          digitalWrite(redLED, HIGH);
-          digitalWrite(blueLED, HIGH);
-          digitalWrite(greenLED, HIGH);
-          digitalWrite(yellowLED, HIGH);
-          
-          delay(250);//in milliseconds
-          
-          digitalWrite(redLED, LOW);
-          digitalWrite(blueLED, LOW);
-          digitalWrite(greenLED, LOW);
-          digitalWrite(yellowLED, LOW);
-          
-          delay(250);//in milliseconds
-          
-          //turns the piezo button ON
-          tone(10,250);
-          
-          delay(200);//in milliseconds
-          
-          //turns the piezo button OFF
-          noTone(10);
-          
-          //adds 1 point to your score
-          score++;
-        
-        
-        //turns OFF the LED light
-        digitalWrite(greenLED, LOW);
-        }
-      }
+      checkMole(greenLED);
       
       elapsed = millis()-starttime;
       delay(150);//in milliseconds

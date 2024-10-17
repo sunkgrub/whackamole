@@ -28,6 +28,14 @@ int elapsed = 0;
 int score;
 
 //sets up the the variables as inputs or outputs
+
+void display_lights(bool Light1, bool Light2, bool Light3, bool Light4) {
+  digitalWrite(redLED, Light1);
+  digitalWrite(blueLED, Light2);
+  digitalWrite(yellowLED, Light3);
+  digitalWrite(greenLED, Light4);
+}
+
 void setup()
 {
   //initialize the LED lights as OUTPUTS

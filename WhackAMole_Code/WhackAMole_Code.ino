@@ -13,16 +13,14 @@
 
 using namespace std;
 
-const int redLED = 2;
-const int blueLED = 3;
-const int greenLED = 4;
-const int yellowLED = 5;
-
-//defining the corresponding buttons
-const int redButton = 9;
-const int blueButton = 8;
-const int greenButton = 7;
-const int yellowButton = 6;
+//molePairs is a 2d array that sorts the outputs and inputs of the game
+//The format is {outputPin,inputPin}
+int molePairs[4][2] = {
+  {2,9},
+  {3,8},
+  {4,7},
+  {5,6}
+}
 
 //defining the piezo buzzer
 const int Piezo = 10;
@@ -36,20 +34,20 @@ int score;
 
 //sets up the the variables as inputs or outputs
 
-void display_lights(bool Light1, bool Light2, bool Light3, bool Light4) {
-  digitalWrite(redLED, Light1);
-  digitalWrite(blueLED, Light2);
-  digitalWrite(yellowLED, Light3);
-  digitalWrite(greenLED, Light4);
+void display_lights(bool lights[4]) {
+  for (int i=0; i < 4; i++) {
+    digitalWrite(molePairs[i][0],lights[i]);
+  }
+
 
 }
 
-void checkMole(int LED) {
-  if(digitalRead(LED)==HIGH)
+void checkMole(int mole) {
+  if(digitalRead(molePairs[mole][0])==HIGH)
       {
         //reads if the button corrosponding to the redLED is ON
         //if redButton is ON proceed into if statement
-        if(digitalRead(buttonMoleMap[LED])==HIGH)
+        if(digitalRead(molePairs[mole][1])==HIGH)
         {
           //shows that a point was gotten
           display_lights(1,1,1,1);

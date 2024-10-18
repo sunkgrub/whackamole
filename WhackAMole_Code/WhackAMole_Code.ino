@@ -79,12 +79,11 @@ void setup() {
   // initialize the corresponding buttons as INPUTS
   //(can also initialize as INPUT_PULLUP 
   // which sets the buttons to HIGH when unpressed)
+  
   for (int i = 0; i < 4; i++) {
-    pinMode(molePairs[i][1], INPUT);
-  }
-
-  for (int i = 1; i < 4; i++) {
-    servos[i]->attach(molePairs[i][0]);
+    pinMode(molePairs[i][1], INPUT); // Set button pins as inputs
+    servos[i]->attach(molePairs[i][0]); // Attach servos to output pins
+    servos[i]->write(0); // Start with the servos in the 'down' position
   }
   
   // initialize the random variable pick
@@ -119,7 +118,8 @@ void loop() {
       elapsed = millis() - starttime;
       delay(150);
     }
-    displayMoles(molesDown); // Turn off all moles
+    servos[randomMole]->write(0); // Turn off mole
+    delay(200);
   }
 
   score = 0;

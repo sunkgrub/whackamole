@@ -10,6 +10,21 @@ Also, if you have any ideas that need to be saved they can go here too. Like ima
 
 [These Force Sensitive resistors I found seem like a good option too](https://www.amazon.com/Pressure-Sensitivity-Sensitive-Industrial-Measurement/dp/B0CZ6L5NMM/ref=mp_s_a_1_4?crid=3UDZ7EV1Z9Q9R&dib=eyJ2IjoiMSJ9.LbNqpw0yLOc0HdTivl-Q0d6_3E5yFkadzRknZQ2ZUQS4eaQG8AugEzYXAscrmtnq01QAbODewRDnnjuSyUMkJH0W-K4LdAryg3aCifl5UAtzAJ3UuH-B05YVsTBjHpjRb4zI_IDIb3Z_sbHhch4C07IiCnxxW59y6i2UanzzI3xCinmDy8WZd3kEDSicd7n6b-H8LZpiXug1QSztMqWWIQ.R0AMmUpLJ2B3cpGWr3ZhPnyZ4TW8EfLA9X98iJ48jz0&dib_tag=se&keywords=force+sensitive+resistor&qid=1729207272&sprefix=force+sensi%2Caps%2C85&sr=8-4)
 
+## Ideas
+- Game modes
+    - Survival: the heads appear faster and faster 
+    - Timed: points are added every time a head is pished down. +1 point each time until the time runs out
+    - Versus: this might be hard to code, not sure what we would have to do.
+
+ 
+- Leaderboard
+    - T9 typing (everytime a number is clicked it cycles through the three letters associated with it, ie: clicking 1 will go from a->b->c->a etc. When the right lette ris on the display the star key can be used to select it)
+ 
+- Servo inputs
+- Score and timer outputs
+- Additional UI to select the game mode (not sure how to do this)
+
+
 ## Contributers
 - Aiden Rivera
 - Isabella Perez

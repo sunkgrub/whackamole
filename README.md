@@ -33,6 +33,7 @@ Also, if you have any ideas that need to be saved they can go here too. Like ima
  
 - Leaderboard
     - T9 typing (everytime a number is clicked it cycles through the three letters associated with it, ie: clicking 1 will go from a->b->c->a etc. When the right letter is on the display the star key can be used to select it)
+    - Multiply by $1000 to equal ‘bounty’ 
  
 - Servo inputs
 - Score and timer outputs

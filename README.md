@@ -15,10 +15,14 @@ Also, if you have any ideas that need to be saved they can go here too. Like ima
 
 [Box models for laser cutting](https://box.laserbiz.ru/?language=en)
 
+
 [Models for 3d printing](https://www.thingiverse.com)
 
 ### 3D Printing files 
 [Octo pirate](https://www.thingiverse.com/thing:2360945)
+
+
+[Tentacles](https://www.thingiverse.com/thing:4420883)
 
 ## Ideas
 - Game modes

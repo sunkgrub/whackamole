@@ -21,10 +21,11 @@ Also, if you have any ideas that need to be saved they can go here too. Like ima
 ### 3D Printing files 
 [Octo pirate](https://www.thingiverse.com/thing:2360945)
 
-
 [Tentacles](https://www.thingiverse.com/thing:4420883)
 
 [Ship](https://www.thingiverse.com/thing:6259322)
+
+[Ship 2](https://www.thingiverse.com/thing:1405830)
 
 ## Ideas
 - Game modes

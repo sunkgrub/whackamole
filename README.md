@@ -27,6 +27,8 @@ Also, if you have any ideas that need to be saved they can go here too. Like ima
 
 [Ship 2](https://www.thingiverse.com/thing:1405830)
 
+[LCD Display](https://www.amazon.com/HiLetgo-Backlight-Display-Arduino-MEGA2560/dp/B01DKETWO2/ref=mp_s_a_1_2_sspa?crid=2XUV79X37GM6S&dib=eyJ2IjoiMSJ9.XU3y2CJBE9KfPG8NnAMgc4lEVB__UprIoQgykEfxiKKKKB1QR-upUC0rlOFp_f4rDGSjXZkiF6txt16ol_573tuLhFgXfuGdtGMbuaVXoxwtO8ayZnpqX7fH6LcD-B0Jn-jW1BWuK3K8SiUVdDQt5Cqf7N60Hh8yir5oJVakyXQxYtcUV13Q7Mvhsxr-7GMtrl_KAJ5MeMSJcj01MkQkjg.0b1h8dRNg378xt8qL3SnZDUzN_2kFzoHDgw5i_fXanI&dib_tag=se&keywords=20x4+lcd+display+for+arduino&qid=1729710756&sprefix=20x4+lc+d%2Caps%2C94&sr=8-2-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9waG9uZV9zZWFyY2hfYXRm&psc=1)
+
 ## Ideas
 - Game modes
     - Survival: the heads appear faster and faster 

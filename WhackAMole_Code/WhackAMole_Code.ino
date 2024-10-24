@@ -1,19 +1,16 @@
-// Initial Code for Whack-A-Mole
-// Written for EDD 111 2024
-// Written By: Katherine O'Keefe
-// Edited by: Koen Gieskes
-// Edited further by: Aiden Rivera
+#include <Servo.h> // Include the Servo library
 
-using namespace std;
-
-// molePairs is a 2d array that sorts the outputs and inputs of the game
-// The format is {outputPin,inputPin}
+// molePairs is a 2d array that sorts the servo and button pins
+// The format is {servoPin, inputPin}
 const int molePairs[4][2] = {
-  {2, 9},
-  {3, 8},
-  {4, 7},
-  {5, 6}
+  {3, 2},   // {Servo for mole 1, Button for mole 1}
+  {5, 4},   // {Servo for mole 2, Button for mole 2}
+  {6, 7},   // {Servo for mole 3, Button for mole 3}
+  {9, 8}    // {Servo for mole 4, Button for mole 4}
 };
+
+// Array to hold Servo objects for each mole
+Servo moles[4];
 
 // defining the piezo buzzer
 const int Piezo = 10;
@@ -25,113 +22,95 @@ int elapsed = 0;
 // defining the score
 int score = 0;
 
-// Global light states
-bool lightsOn[4] = {1, 1, 1, 1};
-bool lightsOff[4] = {0, 0, 0, 0};
+// Global state of the moles (servo positions)
+int upPosition = 0;   // The position for the servo when the mole "pops up"
+int downPosition = 90; // The position for the servo when the mole is "down"
 
-// sets up the variables as inputs or outputs
-void display_lights(bool lights[4]) {
+// Move the servos based on the mole state (up or down)
+void moveMoles(int position[4]) {
   for (int i = 0; i < 4; i++) {
-    digitalWrite(molePairs[i][0], lights[i]);
+    moles[i].write(position[i]);
   }
 }
 
 void checkMole(int mole) {
-  if (digitalRead(molePairs[mole][0]) == HIGH) {
-    // reads if the button corresponding to the red LED is ON
-    // if redButton is ON proceed into if statement
+  if (moles[mole].read() == upPosition) {
+    // if the mole (servo) is in the "up" position
     if (digitalRead(molePairs[mole][1]) == HIGH) {
-      // shows that a point was gotten
-      display_lights(lightsOn);
+      // Button press is detected for this mole
+      // Shows that a point was gotten
+      int allMolesUp[4] = {upPosition, upPosition, upPosition, upPosition};
+      moveMoles(allMolesUp);
       delay(250); // in milliseconds
-      
-      display_lights(lightsOff);
+
+      int allMolesDown[4] = {downPosition, downPosition, downPosition, downPosition};
+      moveMoles(allMolesDown);
       delay(150); // in milliseconds
-      
-      // turns the piezo button ON
+
+      // Play the buzzer sound
       tone(Piezo, 250);
-      
       delay(200); // in milliseconds
-      
-      // turns the piezo button OFF
-      noTone(Piezo);
-      
-      // adds 1 point to your score
+      noTone(Piezo); // Stop the sound
+
+      // Adds 1 point to your score
       score++;
 
-      // turns OFF the LED light
-      digitalWrite(molePairs[mole][0], LOW);
+      // Move the servo back to the "down" position
+      moles[mole].write(downPosition);
     }
   }
 }
 
 void setup() {
-  // initialize the LED lights as OUTPUTS
-  // initialize the corresponding buttons as INPUTS
-  //(can also initialize as INPUT_PULLUP 
-  // which sets the buttons to HIGH when unpressed)
+  // Initialize the servos and buttons
   for (int i = 0; i < 4; i++) {
-    pinMode(molePairs[i][0], OUTPUT);
-    pinMode(molePairs[i][1], INPUT);
+    moles[i].attach(molePairs[i][0]); // Attach the servo to the corresponding pin
+    pinMode(molePairs[i][1], INPUT);  // Set the button pins as inputs
+    moles[i].write(downPosition);     // Initialize the mole in the "down" position
   }
-  
-  // initialize the random variable pick
-  randomSeed(analogRead(0));
-  
-  // initialize the piezo buzzer
+
+  // Initialize the piezo buzzer
   pinMode(Piezo, OUTPUT);
+
+  // Initialize the random seed
+  randomSeed(analogRead(0));
 }
 
-// main function loop
 void loop() {
-  // starts the game with a score of 0
-  // will go through this loop until score hits 4
+  // Start the game with a score of 0
   while (score < 4) {
-    // define randomColor as integer variable 
-    int randomColor;
-    
-    // generate random # from 0 to 4 that matches LED Pins
-    randomColor = random(0, 4);
-    
-    digitalWrite(molePairs[randomColor][0], HIGH);
-    
+    // Randomly select a mole to pop up
+    int randomMole = random(0, 4);
+    moles[randomMole].write(upPosition); // Pop up the mole (move the servo up)
+
     starttime = millis();
     elapsed = 0;
 
     while (elapsed <= 1000) {
       for (int i = 0; i < 4; i++) {
-        if (digitalRead(molePairs[i][0]) == HIGH) {
-          checkMole(i);
+        if (moles[i].read() == upPosition) {
+          checkMole(i); // Check if the mole has been hit
         }
       }
       elapsed = millis() - starttime;
       delay(150);
     }
-    display_lights(lightsOff); // Turn off all moles
+    // Move all moles to the down position
+    int allMolesDown[4] = {downPosition, downPosition, downPosition, downPosition};
+    moveMoles(allMolesDown);
   }
 
+  // Reset the game state when the score reaches 4
   score = 0;
-  // Shows game is over
-  display_lights(lightsOn); // Turn on all lights to indicate game over
-  delay(500);
 
-  display_lights(lightsOff); // Turn off lights
-  delay(400);
+  // Indicate the game is over by moving all moles up and down
+  for (int i = 0; i < 3; i++) {
+    int allMolesUp[4] = {upPosition, upPosition, upPosition, upPosition};
+    moveMoles(allMolesUp);
+    delay(300);
 
-  display_lights(lightsOn); // Turn on lights
-  delay(300);
-
-  display_lights(lightsOff); // Turn off lights
-  delay(200);
-
-  display_lights(lightsOn); // Turn on lights
-  delay(200);
-
-  display_lights(lightsOff); // Turn off lights
-  delay(100);
-
-  display_lights(lightsOn); // Turn on lights
-  delay(500);
-
-  display_lights(lightsOff); // Final turn off
+    int allMolesDown[4] = {downPosition, downPosition, downPosition, downPosition};
+    moveMoles(allMolesDown);
+    delay(300);
+  }
 }

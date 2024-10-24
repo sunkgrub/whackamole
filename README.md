@@ -23,6 +23,7 @@ Also, if you have any ideas that need to be saved they can go here too. Like ima
 ### 3D Printing files 
 [Octo pirate](https://www.thingiverse.com/thing:2360945)
 
+
 [Tentacles](https://www.thingiverse.com/thing:4420883)
 
 [Ship](https://www.thingiverse.com/thing:6259322)
@@ -40,8 +41,7 @@ Also, if you have any ideas that need to be saved they can go here too. Like ima
  
 - Leaderboard
     - T9 typing (everytime a number is clicked it cycles through the three letters associated with it, ie: clicking 1 will go from a->b->c->a etc. When the right letter is on the display the star key can be used to select it)
-    - Multiply by $1000 to equal ‘bounty’
-- Soundtrack to play in the background (Pirates of the Caribbean Theme/Sea Shanty)
+    - Multiply by $1000 to equal ‘bounty’ 
 - Servo inputs
 - Score and timer outputs
 - Additional UI to select the game mode (not sure how to do this)

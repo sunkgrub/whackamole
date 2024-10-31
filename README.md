@@ -17,6 +17,11 @@ Also, if you have any ideas that need to be saved they can go here too. Like ima
 # Stuff we are printing
 [Lasercutting box model](https://box.laserbiz.ru/ClosedBox?language=en)
 
+ x: 381.0
+ y: 203.0
+ h: 127.0
+
+[File link](https://box.laserbiz.ru/ClosedBoxFingerJoint_angle=90.0&FingerJoint_style=rectangular&FingerJoint_surroundingspaces=2.0&FingerJoint_bottom_lip=0.0&FingerJoint_edge_width=1.0&FingerJoint_extra_length=0.0&FingerJoint_finger=2.0&FingerJoint_play=0.0&FingerJoint_space=2.0&FingerJoint_width=1.0&x=381.0&y=203.0&h=127.0&outside=0&outside=1&thickness=3.0&format=svg&tabs=0.0&qr_code=0&debug=0&labels=0&labels=1&reference=0&inner_corners=corner&burn=0.1&language=en&render=1)
 
 ### Housing Models
 

@@ -1,5 +1,3 @@
-#include <iostream>
-
 const int MAX_PLAYERS = 5;
 
 // Declare the leaderboard globally (outside of any function)

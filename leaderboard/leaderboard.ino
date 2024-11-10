@@ -21,7 +21,7 @@ Player leaderboard[MAX_PLAYERS] = {
 
 bool typingActive = false;
 
-LiquidCrystal_I2C lcd(32, 16, 2);
+LiquidCrystal_I2C lcd(0x27, 20, 4);
 const byte ROWS = 4;
 const byte COLS = 4;
 
@@ -132,14 +132,15 @@ char* typing() {
 }
 
 void printLeaderboard(int startIndex) {
-    lcd.clear(); // Clear the screen (only if necessary)
 
     lcd.setCursor(0, 0);
     lcd.print("Leaderboard!");
 
-    for (int i = 0; i < 2; i++) { // Assuming a 2-line LCD
+    for (int i = 0; i < 3; i++) { // Assuming a 2-line LCD
         if (startIndex + i < MAX_PLAYERS) {
             lcd.setCursor(0, i + 1);  // Move to the next row
+            lcd.print(startIndex + i + 1);
+            lcd.print(". ");
             lcd.print(leaderboard[startIndex + i].name);
             lcd.print(": ");
             lcd.print(leaderboard[startIndex + i].score);
@@ -160,9 +161,11 @@ void scrollLeaderboard() {
 
         if (key == 'A' && startIndex > 0) {
             startIndex--;  // Scroll up
+            lcd.clear();
         }
         if (key == 'B' && startIndex < MAX_PLAYERS - 1) {
             startIndex++;  // Scroll down
+            lcd.clear();
         }
         if (key == '*') {
             exit = true;  // Exit the loop

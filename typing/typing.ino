@@ -129,7 +129,8 @@ void setup() {
 
 void loop() {
     if (typingActive) {
-        typing(); // Start the typing function
+        char* newUserName = typing(); // Start the typing function
+        Serial.println(newUserName);
     } else {
         // Check for * to restart typing
         if (customKeypad.getKey() == '*') {

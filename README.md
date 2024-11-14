@@ -13,6 +13,16 @@ Also, if you have any ideas that need to be saved they can go here too. Like ima
 
 [Vibration Sensor](https://www.amazon.com/EC-Buying-SW-420-Vibration-Arduino/dp/B0BKZ7L1SS/ref=mp_s_a_1_11?crid=1ICT7KKDMHQUA&dib=eyJ2IjoiMSJ9.cmL4rmzUTYrAWOBhUx1tK5pMBj1CS7Dsrl7-n_7CCF1r3pOd9WnlSgclfnfwkwVC_Hyc8bYsQ2lm23dmr_6E4htEZosILxn7BLqxsvmRtsYDMtSlUHZiSK35X18lD7REL4FyeULaNDHLcvRLJ6jgEau-__0KoOvf49p1AWquF7T2zOwX8q-jx-c8BiR7qw5dkhUDWrURUZDlfPfHOMzG7g.aIRBFrK2TUHrroT52YZBlZag4eQwdZu-81sPhCUlMIw&dib_tag=se&keywords=vibration+sensor&qid=1729198055&sprefix=vibration+se%2Caps%2C159&sr=8-11) (Still looking into the documentation on this)
 
+
+# Stuff we are printing
+[Lasercutting box model](https://box.laserbiz.ru/ClosedBox?language=en)
+
+ x: 381.0
+ y: 203.0
+ h: 127.0
+
+[File link](https://box.laserbiz.ru/ClosedBoxFingerJoint_angle=90.0&FingerJoint_style=rectangular&FingerJoint_surroundingspaces=2.0&FingerJoint_bottom_lip=0.0&FingerJoint_edge_width=1.0&FingerJoint_extra_length=0.0&FingerJoint_finger=2.0&FingerJoint_play=0.0&FingerJoint_space=2.0&FingerJoint_width=1.0&x=381.0&y=203.0&h=127.0&outside=0&outside=1&thickness=3.0&format=svg&tabs=0.0&qr_code=0&debug=0&labels=0&labels=1&reference=0&inner_corners=corner&burn=0.1&language=en&render=1)
+
 ### Housing Models
 
 [Box models for laser cutting](https://box.laserbiz.ru/?language=en)

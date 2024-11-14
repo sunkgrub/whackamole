@@ -1,7 +1,7 @@
 #include <Servo.h> // Include the Servo library for controlling servo motors
 
 // Define pin pairs for each "mole" servo and button. Each pair represents:
-// {servo pin, button pin}
+// {servo pin, Vibration pin}
 const int molePairs[4][2] = {
   {3, 2},  // Mole 0: Servo on pin 3, button on pin 2
   {5, 4},  // Mole 1: Servo on pin 5, button on pin 4
@@ -54,7 +54,7 @@ void checkMole(int mole) {
 
 // Setup function to initialize game components
 void setup() {
-  // Initialize each mole servo and its corresponding button
+  // Initialize each mole servo and its corresponding vibration sensor
   for (int i = 0; i < 4; i++) {
     moles[i].attach(molePairs[i][0]);       // Attach servo to pin
     pinMode(molePairs[i][1], INPUT);        // Set button pin as input

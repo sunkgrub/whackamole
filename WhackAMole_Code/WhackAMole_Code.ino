@@ -25,6 +25,7 @@ bool gameActive = false; // Tracks if the game is active or not
 int misses = 0;          // Tracks the player's missed moles
 int moleTimeLimit = 1500; // Initial time limit to hit mole (ms)
 int lastMole = -1;       // Keeps track of the last mole's index (initialized to -1)
+bool danceTime = true;
 
 // Servo positions for mole movement
 int upPosition = 0;      // Angle position for the "up" state
@@ -74,6 +75,7 @@ void resetGame() {
   moveMoles(allMolesDown); // Set all moles to the down position
   delay(200);              // Small delay to let everything reset
   lastMole = -1;           // Reset last mole index to ensure randomness on game start
+  danceTime = true;
 }
 
 // Main game loop
@@ -125,7 +127,7 @@ void loop() {
 
     // Gradually decrease mole time limit to make the game harder
     if (moleTimeLimit > 200) {
-      moleTimeLimit -= 20; // Decrease mole time limit by 20 ms
+      moleTimeLimit -= 50; // Decrease mole time limit by 20 ms
     }
   }
 
@@ -133,15 +135,18 @@ void loop() {
   if (misses >= 3) {
     gameActive = false; // End the game
 
+    if (danceTime && !gameActive) {
     // Final animation to indicate game end
-    for (int i = 0; i < 3; i++) {
-      int allMolesUp[4] = {upPosition, upPosition, upPosition, upPosition};
-      moveMoles(allMolesUp); // Raise all moles
-      delay(300);            // Hold up position
+      for (int i = 0; i < 3; i++) {
+        int allMolesUp[4] = {upPosition, upPosition, upPosition, upPosition};
+        moveMoles(allMolesUp); // Raise all moles
+        delay(300);            // Hold up position
 
-      int allMolesDown[4] = {downPosition, downPosition, downPosition, downPosition};
-      moveMoles(allMolesDown); // Lower all moles
-      delay(300);              // Hold down position
+        int allMolesDown[4] = {downPosition, downPosition, downPosition, downPosition};
+        moveMoles(allMolesDown); // Lower all moles
+        delay(300);              // Hold down position
+      }
+      danceTime = false;
     }
   }
 }
